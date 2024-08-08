@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/SolidPrinciples.iml" filepath="$PROJECT_DIR$/.idea/SolidPrinciples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SolidPrinciplesLLD/SolidPrinciplesLLD.iml" filepath="$PROJECT_DIR$/SolidPrinciplesLLD/SolidPrinciplesLLD.iml" />
+    </modules>
+  </component>
+</project>
