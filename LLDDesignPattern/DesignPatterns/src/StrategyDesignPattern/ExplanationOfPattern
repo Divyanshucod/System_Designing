@@ -1,0 +1,8 @@
+/*
+   Strategy Design Pattern is a one of the most using design pattern. you might be using it in your day to day project or office work,
+   but you might don't know the method that you're using in your work has a name called Strategy Design Pattern.
+   What -> first of all i will not give you the bookish explanation, it is a design that allow class to change its behaviour at  runtime by selecting an algo
+   from family of algos,it encapsulate the algo in different class making them interchangeale without modifying the client code.
+
+   see the implementation.
+*/
