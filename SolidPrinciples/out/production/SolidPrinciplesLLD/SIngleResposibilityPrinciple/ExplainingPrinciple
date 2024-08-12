@@ -1,0 +1,14 @@
+/*
+    here we talk about the easiest yet important design principle called single resposibility principle
+    What -> so in a simple manner it says that the class should have only one reason to change. simple 😎
+    Why -> It helps to increase manageability,reliability,flexibility.
+    How it works? Let's understand with example.
+    consider you have to design a billing system where the only functionalities
+    you have to add is generate invoice and print that invoice "invoice -> "arre bhai bill receipt ki bat kar raha hu""
+    so you might be thinking we can one class to handle both the things via creating functions like GenerateInvoice
+    , PrintInvoice. but if you do that you will violate the SRP(Single-Responsibility-Principle). but how?
+    what if i future you want to change the method of generating bill and also what if you want to add new device to print
+    invoice in this way you will have two reasons to change the class. but what i told you i want only one reason to change.
+
+    let's implement this and see how will it work. Before and After
+     */
