@@ -5,7 +5,4 @@
    from family of algos,it encapsulate the algo in different class making them interchangeale without modifying the client code.
 
    see the implementation.
-
-    and if you want more explaination check out my linkedin post.
-    https://www.linkedin.com/in/divyanshu-prajapati-606a10252
 */
