@@ -1,0 +1,17 @@
+/*
+   What -> Decorator Design Pattern is a most commonly used design pattern Ex. pizza shop,coffee shop (these are
+   the places where you offen go for eat and drink(to wake up your self).
+   In this pattern we will have only one base class and we can add more features in this itself. instead of creating multiple
+   classes for each feature. same as pizza, initially we have base pizza with limited amount of toppings or cheese etc.
+   but what if you are a person who love cheese or more spice, then what you will do, you can tell the baker or person who are giving/packing pizzas
+   to add more cheese, so what that person do, will they create new pizza or add topping or cheese to existing one.
+   obviously second option. same why this work in programming. "" apart from creating multiple class you will just create one decorator class and start
+   decorating the baseobj in this way it will help to avoid class explosion and you don't need to create multiple object multiple time"".
+
+   To Demonstrate this i have created a simple design/system "Text formatting" how text formation work. and you can add more things like
+   aligning the text,space between text etc etc.
+
+    and if you want more explaination check out my linkedin post.
+    https://www.linkedin.com/in/divyanshu-prajapati-606a10252
+
+*/

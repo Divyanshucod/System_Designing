@@ -28,11 +28,11 @@ public class CreatePieces {
         }
         //2 Knights
         for(int i=0;i<2;i++){
-            Piece knight = type.equals('B') ? new Piece(PieceType.Bkn) : new Piece(PieceType.Wkn);
+            Piece knight = type.equals('B') ? new Piece(PieceType.Bk) : new Piece(PieceType.Wk);
             listOfPieces.add(knight);
         }
         //1 king
-        Piece king = type.equals('B') ? new Piece(PieceType.BKi) : new Piece(PieceType.WKi);
+        Piece king = type.equals('B') ? new Piece(PieceType.BK) : new Piece(PieceType.WK);
         listOfPieces.add(king);
         //1 Queen
         Piece queen = type.equals('B') ? new Piece(PieceType.BQ) : new Piece(PieceType.WQ);

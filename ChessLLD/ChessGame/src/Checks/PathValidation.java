@@ -1,6 +1,7 @@
 package Checks;
 
 import GameBoard.Board;
+import PlayerAndPieces.Piece;
 import PlayerAndPieces.PieceType;
 
 import java.util.ArrayList;
@@ -15,31 +16,35 @@ public class PathValidation {
         KingsPosition.put(false,new ArrayList<>(Arrays.asList(0,4)));
     }
     public boolean PathValidations(Board gameBoard,int pieceCurrRow,int pieceCurrCol,int pieceDestRow,int pieceDestCol,boolean pieceColor){
+       if(gameBoard.getPiece(pieceCurrRow, pieceCurrCol) == null){
+           System.out.println("Invalid Move!");
+       }
         return switch (gameBoard.getPiece(pieceCurrRow, pieceCurrCol).getTroop()) {
             case BP, WP -> validatePawnMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
             case BB, WB -> validateBishopMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
             case BR, WR -> validateRookMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
-            case Bkn, Wkn -> validateKnightMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
-            case BKi, WKi -> validateKingMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
+            case Bk, Wk -> validateKnightMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
+            case BK, WK -> validateKingMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
             case WQ, BQ -> validateQueenMove(gameBoard, pieceCurrRow, pieceCurrCol, pieceDestRow, pieceDestCol, pieceColor);
         };
     }
     public boolean validatePawnMove(Board gameBoard,int pawnCurrRow,int pawnCurrCol,int pawnDestRow,int pawnDestCol,boolean pieceColor){
         // Pawn can move in two ways either straight or diagonal but one step at a time. and diagonal only when you have
         // A opponent piece on that cell other-wise only one option to move is straight.
-        int[] delrowForBlack = {1,1,1};
-        int[] delcolForBlack = {-1,0,1};
-        int[] delrowForWhite = {-1,-1,-1};
-        int[] delcolForWhite = {-1,0,1};
-        for(int i=0;i<3;i++){
+        int[] delrowForBlack = (pawnCurrRow == 1 && !pieceColor)? new int[]{1, 1, 1, 2} : new int[]{1, 1, 1};
+        int[] delcolForBlack = (pawnCurrRow == 1 && !pieceColor)? new int[]{-1,0,1,0} : new int[]{-1,0,1};
+        int[] delrowForWhite = (pawnCurrRow == 6 && pieceColor)? new int[]{-1,-1,-1,-2} : new int[]{-1,-1,-1};
+        int[] delcolForWhite = (pawnCurrRow == 6 && pieceColor)? new int[]{-1,0,1,0} : new int[]{-1,0,1};
+        for(int i=0;i<delcolForWhite.length;i++){
             int nrow = pieceColor ? pawnCurrRow+delrowForWhite[i] : pawnCurrRow+delrowForBlack[i];
             int newCol = pieceColor ? pawnCurrCol+delcolForWhite[i] : pawnCurrCol+delcolForBlack[i];
-            if(i==1 && validatePosition(nrow,newCol,gameBoard,pieceColor,pawnDestRow,pawnDestCol)){
+            if((i%2 != 0) && validatePosition(nrow,newCol,gameBoard,pieceColor,pawnDestRow,pawnDestCol)){
                 //check king will get check if you move this piece to do that move this piece temporary and check via (checking) check function
-                return checkKingIndirectCheck(pawnCurrRow, pawnCurrCol, pawnDestRow, pawnDestCol, gameBoard, pieceColor);
+                System.out.println("Inside Odd Check");
+                return !checkKingIndirectCheck(pawnCurrRow, pawnCurrCol, pawnDestRow, pawnDestCol, gameBoard, pieceColor);
             }
-            else if(i!=1 && validatePieceEliminationViaPawn(nrow,newCol,gameBoard,pieceColor,pawnDestRow,pawnDestCol)){
-                return checkKingIndirectCheck(pawnCurrRow, pawnCurrCol, pawnDestRow, pawnDestCol, gameBoard, pieceColor);
+            else if((i%2 == 0) && validatePieceEliminationViaPawn(nrow,newCol,gameBoard,pieceColor,pawnDestRow,pawnDestCol)){
+                return !checkKingIndirectCheck(pawnCurrRow, pawnCurrCol, pawnDestRow, pawnDestCol, gameBoard, pieceColor);
             }
         }
         return false;
@@ -49,7 +54,7 @@ public class PathValidation {
         boolean res1 = checkRightDiagonalMovement(gameBoard,bishopCurrRow,bishopCurrCol,bishopDestRow,bishopDestCol,pieceColor);
         boolean res2 = checkLeftDiagonalMovement(gameBoard,bishopCurrRow,bishopCurrCol,bishopDestRow,bishopDestCol,pieceColor);
         if(res2 || res1){
-            return checkKingIndirectCheck(bishopCurrRow, bishopCurrCol, bishopDestRow, bishopDestCol, gameBoard, pieceColor);
+            return !checkKingIndirectCheck(bishopCurrRow, bishopCurrCol, bishopDestRow, bishopDestCol, gameBoard, pieceColor);
         }
         return false;
     }
@@ -57,7 +62,7 @@ public class PathValidation {
         boolean res1 = checkHorizontalMovement(gameBoard,rookCurrRow,rookCurrCol,rookDestRow,rookDestCol,pieceColor);
         boolean res2 = checkVerticalMovement(gameBoard,rookCurrRow,rookCurrCol,rookDestRow,rookDestCol,pieceColor);
         if(res2 || res1){
-            return checkKingIndirectCheck(rookCurrRow, rookCurrCol, rookDestRow, rookDestCol, gameBoard, pieceColor);
+            return !checkKingIndirectCheck(rookCurrRow, rookCurrCol, rookDestRow, rookDestCol, gameBoard, pieceColor);
         }
         return false;
     }
@@ -68,7 +73,7 @@ public class PathValidation {
             int nrow = knightCurrRow+delrow[i];
             int newCol = knightCurrCol+delcol[i];
             if(validatePosition(nrow,newCol,gameBoard,pieceColor,knightDestRow,knightDestCol)){
-                return checkKingIndirectCheck(knightCurrRow, knightCurrCol, knightDestRow, knightDestCol, gameBoard, pieceColor);
+                return !checkKingIndirectCheck(knightCurrRow, knightCurrCol, knightDestRow, knightDestCol, gameBoard, pieceColor);
             }
         }
         return false;
@@ -81,10 +86,14 @@ public class PathValidation {
             int newCol = kingCurrCol+delcol[i];
             if(validatePosition(nrow,newCol,gameBoard,pieceColor,kingDestRow,kingDestCol)){
                 KingsPosition.put(pieceColor,new ArrayList<>(Arrays.asList(kingDestRow,kingDestCol)));
-                if(!checkKingGettingCheck(kingDestRow, kingDestCol, gameBoard, pieceColor)){
+                boolean res = checkKingGettingCheck(kingDestRow, kingDestCol, gameBoard, pieceColor);
+                if(res){
+                    KingsPosition.put(pieceColor,new ArrayList<>(Arrays.asList(kingCurrRow,kingCurrCol)));
+                    return false;
+                }
+                else{
                     return true;
                 }
-                KingsPosition.put(pieceColor,new ArrayList<>(Arrays.asList(kingCurrRow,kingCurrCol)));
             }
         }
         return false;
@@ -95,7 +104,7 @@ public class PathValidation {
         boolean res3 = checkHorizontalMovement(gameBoard,queenCurrRow,queenCurrCol,queenDestRow,queenDestCol,pieceColor);
         boolean res4 = checkVerticalMovement(gameBoard,queenCurrRow,queenCurrCol,queenDestRow,queenDestCol,pieceColor);
         if(res || res2 || res3 || res4){
-            return checkKingIndirectCheck(queenCurrRow, queenCurrCol, queenDestRow, queenDestCol, gameBoard, pieceColor);
+            return !checkKingIndirectCheck(queenCurrRow, queenCurrCol, queenDestRow, queenDestCol, gameBoard, pieceColor);
         }
         return false;
     }
@@ -107,14 +116,18 @@ public class PathValidation {
         return (pieceCurrRow == pieceDestRow && pieceCurrCol == pieceDestCol);
     }
     public boolean pieceCheck(boolean pieceColor,Board gameBoard,int newRow,int newCol){
+        if(gameBoard.getPiece(newRow,newCol) == null){
+
+            return false;
+        }
         PieceType piece = gameBoard.getPiece(newRow,newCol).getTroop();
         if(pieceColor){
             return (piece == PieceType.WB || piece == PieceType.WP ||
-                    piece == PieceType.Wkn || piece == PieceType.WKi || piece == PieceType.WR || piece == PieceType.WQ);
+                    piece == PieceType.Wk || piece == PieceType.WK || piece == PieceType.WR || piece == PieceType.WQ);
         }
         else{
             return (piece == PieceType.BB || piece == PieceType.BP ||
-                    piece == PieceType.Bkn || piece == PieceType.BKi || piece == PieceType.BR || piece == PieceType.BQ);
+                    piece == PieceType.Bk || piece == PieceType.BK || piece == PieceType.BR || piece == PieceType.BQ);
         }
 
     }
@@ -202,14 +215,17 @@ public class PathValidation {
         return false;
     }
     public boolean pawnMoveCheck(boolean pieceColor,Board gameBoard,int newRow,int newCol){
+        if(gameBoard.getPiece(newRow,newCol) == null){
+            return false;
+        }
         PieceType piece = gameBoard.getPiece(newRow,newCol).getTroop();
         if(pieceColor){
             return (piece == PieceType.BB || piece == PieceType.BP ||
-                    piece == PieceType.Bkn || piece == PieceType.BKi || piece == PieceType.BR || piece == PieceType.BQ);
+                    piece == PieceType.Bk || piece == PieceType.BK || piece == PieceType.BR || piece == PieceType.BQ);
         }
         else{
             return (piece == PieceType.WB || piece == PieceType.WP ||
-                    piece == PieceType.Wkn || piece == PieceType.WKi || piece == PieceType.WR || piece == PieceType.WQ);
+                    piece == PieceType.Wk || piece == PieceType.WK || piece == PieceType.WR || piece == PieceType.WQ);
         }
 
     }
@@ -236,7 +252,7 @@ public class PathValidation {
         //right up
         int r = row-1;
         int c = col+1;
-        while(r >= 0 && r< gameBoard.getSize() && c >=0 && c <gameBoard.getSize()){
+        while(r >= 0 && r< gameBoard.getSize() && c >=0 && c < gameBoard.getSize()){
             if(isKingGettingCheck(r,c,gameBoard,pieceColor,"bishop")){
                 return true;
             }
@@ -264,8 +280,8 @@ public class PathValidation {
             c--;
         }
         //left down
-        r = row-1;
-        c = col-1;
+        r = row+1;
+        c = col+1;
         while(r >= 0 && r< gameBoard.getSize() && c >=0 && c <gameBoard.getSize()){
             if(isKingGettingCheck(r,c,gameBoard,pieceColor,"bishop")){
                 return true;
@@ -277,8 +293,10 @@ public class PathValidation {
         return false;
     }
     public boolean isKingGettingCheck(int row,int col,Board gameBoard,boolean pieceColor,String type){
-        PieceType piece = gameBoard.getPiece(row,col).getTroop();
-        if(pieceColor && piece != null){
+        Piece troop = gameBoard.getPiece(row,col);
+        if(troop == null)return false;
+        PieceType piece= gameBoard.getPiece(row,col).getTroop();
+        if(pieceColor){
             switch (type) {
                 case "bishop" -> {
                     return (piece == PieceType.BB || piece == PieceType.BQ);
@@ -290,14 +308,14 @@ public class PathValidation {
                     return (piece == PieceType.BP);
                 }
                 case "king" -> {
-                    return (piece == PieceType.BKi);
+                    return (piece == PieceType.BK);
                 }
                 case "knight" -> {
-                    return (piece == PieceType.Bkn);
+                    return (piece == PieceType.Bk);
                 }
             }
         }
-        else if(!pieceColor && piece != null){
+        else{
             switch (type) {
                 case "bishop" -> {
                     return (piece == PieceType.WB || piece == PieceType.WQ);
@@ -309,10 +327,10 @@ public class PathValidation {
                     return (piece == PieceType.WP);
                 }
                 case "king" -> {
-                    return (piece == PieceType.WKi);
+                    return (piece == PieceType.WK);
                 }
                 case "knight" -> {
-                    return (piece == PieceType.Wkn);
+                    return (piece == PieceType.Wk);
                 }
             }
         }
@@ -357,7 +375,7 @@ public class PathValidation {
         for(int i=0;i<8;i++){
             int newRow = row+delrow[i];
             int newCol = col+delcol[i];
-            if(isKingGettingCheck(newRow,newCol,gameBoard,pieceColor,"knight")){
+            if(gameBoard.ValidatePositions(row,col,newRow,newCol) && isKingGettingCheck(newRow,newCol,gameBoard,pieceColor,"knight")){
                 return true;
             }
         }
@@ -371,7 +389,7 @@ public class PathValidation {
         for(int i=0;i<2;i++){
             int newRow = pieceColor?row+delrowForBlackPawn[i]:row+delrowForWhitePawn[i];
             int newCol = pieceColor?col+delcolForBlackPawn[i]:col+delcolForWhitePawn[i];
-            if(isKingGettingCheck(newRow,newCol,gameBoard,pieceColor,"pawn")){
+            if(gameBoard.ValidatePositions(row,col,newRow,newCol) && isKingGettingCheck(newRow,newCol,gameBoard,pieceColor,"pawn")){
                 return true;
             }
         }
@@ -384,18 +402,18 @@ public class PathValidation {
         for(int i=0;i<8;i++){
             int newRow = row+delrow[i];
             int newCol = col+delcol[i];
-            if(isKingGettingCheck(newRow,newCol,gameBoard,pieceColor,"king")){
+            if(gameBoard.ValidatePositions(row,col,newRow,newCol) && isKingGettingCheck(newRow,newCol,gameBoard,pieceColor,"king")){
                 return true;
             }
         }
         return false;
     }
     public boolean checkKingIndirectCheck(int pieceCurrRow,int pieceCurrCol,int pieceDestRow,int pieceDestCol,Board gameBoard,boolean pieceColor){
-        gameBoard.movePieces(pieceCurrRow,pieceCurrCol,pieceCurrRow,pieceDestCol);
+        gameBoard.movePieces(pieceCurrRow,pieceCurrCol,pieceDestRow,pieceDestCol);
         List<Integer>kingsPos = KingsPosition.get(pieceColor);
         boolean res = checkKingGettingCheck(kingsPos.get(0),kingsPos.get(1),gameBoard,pieceColor);
         gameBoard.movePieces(pieceDestRow,pieceDestCol,pieceCurrRow,pieceCurrCol);
-        return !res;
+        return res;
     }
     public boolean checkCheckMate(Board gameBoard,boolean pieceColor){
         List<Integer>kingsPos = KingsPosition.get(pieceColor);
@@ -412,4 +430,7 @@ public class PathValidation {
         }
         return true;
     }
+
+    //stalemate check
+    //piece promotion
 }

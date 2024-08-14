@@ -20,6 +20,7 @@ public class Game {
     }
     public void initialization(int size){
         this.board = new Board(size);
+        this.board.createBoard();
         System.out.println("-----------WELCOME TO CHESS GAME!-----------");
         System.out.println("Player first Choose Color: Ex. black or white");
         Scanner scanner = new Scanner(System.in);
@@ -51,10 +52,11 @@ public class Game {
             deq.addLast(p2);
         }
         pathObject = new PathValidation();
-        startGame();
+        System.out.println(startGame());
     }
     public String startGame(){
-        while(true){
+        boolean nowinner = true;
+        while(nowinner){
             Players player = deq.getFirst();
             System.out.println("Hi! "+player.getname()+" your turn!");
             System.out.println("Enter starting row: ");
@@ -95,17 +97,19 @@ public class Game {
                  result = pathObject.checkCheckMate(board, !player.getPieceColorBoolean());
                  if(result){
                     if(player.getPieceColorBoolean()){
-                        System.out.println("Hi! "+p1.getname()+" You lose the game!");
-                    }
-                    else{
                         System.out.println("Hi! "+p2.getname()+" You lose the game!");
                     }
-                }
+                    else{
+                        System.out.println("Hi! "+p1.getname()+" You lose the game!");
+                    }
+                     nowinner = false;
+                 }
             }
             else{
                 deq.addFirst(p1);
             }
         }
+        return "Game Over";
     }
 
 }

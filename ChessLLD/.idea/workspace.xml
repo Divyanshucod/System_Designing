@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a5450c9-43a3-47dc-848c-929f1092e61e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/DataBaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/DataBaseConnectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/MongoDBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/MongoDBConnectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/MySqlConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/MySqlConnectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/OracleConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/After/OracleConnectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/Before/DataBaseConnect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/Before/MongoDBConnect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/Before/MySqlConnect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/Before/OracleConnect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/ExplanationOfPattern" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/src/FactoryDesignPatttern/MainClass4.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LLDDesignPattern/DesignPatterns/DesignPatterns.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChessGame/src/Checks/PathValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGame/src/Checks/PathValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChessGame/src/GameBoard/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGame/src/GameBoard/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChessGame/src/GameMain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGame/src/GameMain/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChessGame/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGame/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChessGame/src/PlayerAndPieces/CreatePieces.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGame/src/PlayerAndPieces/CreatePieces.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChessGame/src/PlayerAndPieces/PieceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGame/src/PlayerAndPieces/PieceType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LLDDesignPattern/out/production/DesignPatterns/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LLDDesignPattern/out/production/DesignPatterns/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LLDDesignPattern/out/production/DesignPatterns/ObserverDesignPattern/ExplanationOfPattern" beforeDir="false" afterPath="$PROJECT_DIR$/../LLDDesignPattern/out/production/DesignPatterns/ObserverDesignPattern/ExplanationOfPattern" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LLDDesignPattern/out/production/DesignPatterns/StrategyDesignPattern/ExplanationOfPattern" beforeDir="false" afterPath="$PROJECT_DIR$/../LLDDesignPattern/out/production/DesignPatterns/StrategyDesignPattern/ExplanationOfPattern" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,16 +58,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/SystemDesigning/LLDDesignPattern/DesignPatterns",
-    "onboarding.tips.debug.path": "C:/SystemDesigning/ChessLLD/ChessGame/src/Main.java",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/SystemDesigning/LLDDesignPattern/DesignPatterns&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/SystemDesigning/ChessLLD/ChessGame/src/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ChessGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,5 +93,15 @@
       <updated>1723118968041</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

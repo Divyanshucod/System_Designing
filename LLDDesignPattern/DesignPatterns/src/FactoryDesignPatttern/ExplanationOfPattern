@@ -1,0 +1,15 @@
+/*
+  what -> factory design patten is a pattern which is used in a situations where we want to create a object dynamically on the basis of certain situations
+  it will create object for you without disclosing a actual logic of how the objects are creating, you are creating objects via
+  abstraction layer say factory without rely on actual concrete class, which make this flexible,loose coupling,maintainable etc.
+
+  I have used an example(DataBase Connection System) where you are connecting to different database and this is very useful when you are working
+  with multiple databases for storing and retrieval.  
+  and i also coded the basic system to demonstrate this real world example clearly.
+
+  One Example that you can try by yourself is shape creation where you have shape as factory and inside this u are creating a multiple objects like -> 
+  square,triangle,rectangle,circle..etc and another interface say DRAW and contains draw function and implement this draw method for different shapes.
+   
+  and if you want more explanation check out my linkedin post.
+  https://www.linkedin.com/in/divyanshu-prajapati-606a10252
+*/

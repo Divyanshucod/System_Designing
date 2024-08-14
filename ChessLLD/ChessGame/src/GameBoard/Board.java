@@ -3,12 +3,17 @@ package GameBoard;
 import PlayerAndPieces.Piece;
 import PlayerAndPieces.PieceType;
 
+import java.util.HashMap;
+
 public class Board {
     int size = 0;
     Piece[][] board;
+    HashMap<PieceType,String>listOfPiecesOnBoard;
     public Board(int size){
         this.size = size;
         this.board = new Piece[size][size];
+        listOfPiecesOnBoard = new HashMap<>();
+        mapPieces();
     }
     public void createBoard(){
         // arrange piece at their specific positions
@@ -28,13 +33,13 @@ public class Board {
         board[7][6] = new Piece(PieceType.WB);
         board[7][1] = new Piece(PieceType.WB);
         //knights
-        board[0][2] = new Piece(PieceType.Bkn);
-        board[0][5] = new Piece(PieceType.Bkn);
-        board[7][5] = new Piece(PieceType.Wkn);
-        board[7][2] = new Piece(PieceType.Wkn);
+        board[0][2] = new Piece(PieceType.Bk);
+        board[0][5] = new Piece(PieceType.Bk);
+        board[7][5] = new Piece(PieceType.Wk);
+        board[7][2] = new Piece(PieceType.Wk);
         //king
-        board[0][4] = new Piece(PieceType.BKi);
-        board[7][4] = new Piece(PieceType.WKi);
+        board[0][4] = new Piece(PieceType.BK);
+        board[7][4] = new Piece(PieceType.WK);
         //queen
         board[0][3] = new Piece(PieceType.BQ);
         board[7][3] = new Piece(PieceType.WQ);
@@ -57,8 +62,14 @@ public class Board {
     public void printBoard(){
         for(int i=0;i<8;i++){
             for (int j=0;j<8;j++){
-                System.out.println(board[i][j].getTroop());
+                if(board[i][j] != null){
+                    System.out.print("| "+listOfPiecesOnBoard.get(board[i][j].getTroop())+" |");
+                }
+                else{
+                    System.out.print("|    |");
+                }
             }
+            System.out.println();
         }
     }
     public Piece getPiece(int row,int col){
@@ -70,5 +81,19 @@ public class Board {
     }
     public int getSize(){
         return this.size;
+    }
+    void mapPieces(){
+        listOfPiecesOnBoard.put(PieceType.BK,"BK");
+        listOfPiecesOnBoard.put(PieceType.BB,"BB");
+        listOfPiecesOnBoard.put(PieceType.BP,"BP");
+        listOfPiecesOnBoard.put(PieceType.BR,"BR");
+        listOfPiecesOnBoard.put(PieceType.Bk,"Bk");
+        listOfPiecesOnBoard.put(PieceType.BQ,"BQ");
+        listOfPiecesOnBoard.put(PieceType.WP,"WP");
+        listOfPiecesOnBoard.put(PieceType.WR,"WR");
+        listOfPiecesOnBoard.put(PieceType.WB,"WB");
+        listOfPiecesOnBoard.put(PieceType.WQ,"WQ");
+        listOfPiecesOnBoard.put(PieceType.Wk,"Wk");
+        listOfPiecesOnBoard.put(PieceType.WK,"WK");
     }
 }
