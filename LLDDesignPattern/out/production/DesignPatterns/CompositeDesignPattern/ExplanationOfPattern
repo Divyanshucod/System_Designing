@@ -1,0 +1,13 @@
+/*
+ it is a very important pattern image this pattern as tree where on every node you have choice that maybe the your
+ current node where you are standing is a leaf node or maybe you have more children down.
+
+ Composite Pattern is used when we know that their is going to handle a complex structure like tree.
+ what ->
+    This Pattern allow you to compose objects into tree structure to represent whole hierarchies.
+
+ problem i have used to demonstrate the use of this pattern is (Company hierarchies).
+ check out the linkedin post for more explanation.
+
+https://www.linkedin.com/in/divyanshu-prajapati-606a10252.
+*/

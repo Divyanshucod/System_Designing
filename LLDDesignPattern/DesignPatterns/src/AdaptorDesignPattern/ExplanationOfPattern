@@ -1,0 +1,18 @@
+/*
+Adaptor Pattern is most commonly use design pattern this is very relatable to real world more then any other
+patterns that we learn till now.
+Most common example is -> adaptor that use to connect wires in different - different sockets.
+what -<> Adaptor Design pattern is a pattern that works as a bridge between existing interface and expecting/desired interface.
+it helps you convert one thing to another thing. Ex-.
+ Let's say you are creating a backend that send results in xml format but your client only understands JSON so how you make
+ you result compatible to client. it just simple write simple code to convert simple code to convert xml to JSON.
+ but there is a problem you do this it will work but if in the future if you want another conversion let say XML to html then
+ You will again write code. and update the whole previous code so that it can adapt but you are violating the OPP(open/close)
+
+ so it better to create separate interface and class to handle all thses things.
+
+ problem i have used to demonstrate the use of this pattern is (Shopping Cart Payment system).
+ check out the linkedin post for more explanation.
+
+ https://www.linkedin.com/in/divyanshu-prajapati-606a10252.
+*/
