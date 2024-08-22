@@ -1,0 +1,12 @@
+/*
+ what ->this is a pattern that we use to hide complexities of system.
+ ex. lets say you have to build a cars with methods like acceleration,break,clutch. but we all know these will not work along
+ we will require more other classes and object that can interact to each other and operate together to give one specific functionality
+ like acceleration there could be other methods and class that handle speeding up wheels, handle fuel exhaustion(more fuel will be use is speeding up)
+ and many more.
+
+ Note -> it does not enforce client to use that facade layer the client can also access those complex methods as well.
+
+ i have used example (Vide Player System) you can see the explanation in the post on linkedIn
+ https://www.linkedin.com/in/divyanshu-prajapati-606a10252
+*/

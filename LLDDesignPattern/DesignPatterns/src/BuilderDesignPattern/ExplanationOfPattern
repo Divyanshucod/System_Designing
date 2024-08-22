@@ -1,0 +1,11 @@
+
+ what -> this is a step by step object creation system.in this we create a object in the specific order.
+ ex. lets say you have to build a house then to build house we requires a some important things at very basic level(walls,roof,rooms,doors,windows etc etc).
+ but we also know we can not create any thing at any level like we can create door before the rooms, and same way can't rooms before wall.
+ so we want specific order to create objects. it also helps to avoid complex constructor structure 'think this through'
+ assume you have to create a system to manage student detail and for each student you may have lot of information like.
+ name,id,rollno,address,subjects,parents information, admission and many more, so just imagine how big you constructor will be to manage those information
+ you can simplify this using this pattern.
+
+ i have used example (cars manufacture System) you can see the explanation in the post on linkedIn.
+ https://www.linkedin.com/in/divyanshu-prajapati-606a10252
